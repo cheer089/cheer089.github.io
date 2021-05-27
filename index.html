@@ -4,18 +4,485 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
         <title>Document</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            article {
+                display: inline-block;
+                text-align: center;
+                width: 100%;
+                padding: 0 200px;
+            }
+            article .sub-title {
+                margin: 100px 0 50px 0;
+                font-size: 32px;
+                font-weight: 500;
+            }
+            header {
+                position: relative;
+            }
+            header .banner {
+                position: relative;
+            }
+            header .banner .title {
+                position: absolute;
+                top: 60%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                font-size: 46px;
+            }
+            header .banner .img-wrap {
+                width: 100%;
+                height: 600px;
+            }
+            header .banner .img-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            header aside {
+                width: 100%;
+                height: 60px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 2;
+                padding: 24px 36px;
+            }
+            header aside .burger-wrap {
+                height: 30px;
+                width: 40px;
+                cursor: pointer;
+                display: none;
+                position: relative;
+                padding: 20px 0;
+            }
+            header aside .burger {
+                position: relative;
+                width: 100%;
+                height: 2px;
+                background-color: black;
+                display: block;
+            }
+            header aside .burger::after {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 2px;
+                background: black;
+                top: -8px;
+                left: 0;
+                position: absolute;
+            }
+            header aside .burger::before {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 2px;
+                background: black;
+                top: 8px;
+                left: 0;
+                position: absolute;
+            }
+            header aside ul {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+            header aside ul li {
+                list-style: none;
+                margin: 0 10px;
+            }
+            header aside ul li a {
+                text-decoration: none;
+                outline: none;
+                color: black;
+                font-weight: 600;
+                display: inline-block;
+                transition: all .5s ease-in-out;
+                font-size: 20px;
+                color: black;
+            }
+            header aside ul li a:hover {
+                transform: translateY(-6px);
+            }
+
+            /* About Me*/
+            article.about .content {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            article.about .content .img-wrap {
+                width: 800px;
+                height: 400px;
+                overflow: hidden;
+                border-radius: 6px;
+                animation: up-down 3s;
+                animation-iteration-count: infinite;
+                margin-right: 20px;
+            }
+            article.about .content .img-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            @keyframes up-down {
+                0% {
+                    transform: translateY(-10px);   
+                }
+                50% {
+                    transform: translateY(10px);   
+                }
+                100% {
+                    transform: translateY(-10px);   
+                }
+            }
+            article.about .content .paragraph {
+                position: relative;
+            }
+            article.about .content .paragraph .name::after {
+                content: "Angel";
+                position: absolute;
+                font-size: 60px;
+                font-weight: 600;
+                text-align: start;
+                color: black;
+                top: 50%;
+                left: 20px;
+                transform: translateY(-50%);
+            }
+            article.about .content .paragraph .name {
+                position: relative;
+                content: "ABOUT";
+                font-size: 150px;
+                font-family: sans-serif;
+                font-style: italic;
+                font-weight: 800;
+                color: white;
+                text-shadow: -1px 0 rgba(0, 0, 0, .1),
+                             0 1px rgba(0, 0, 0, .1), 
+                             1px 0 rgba(0, 0, 0, .1), 
+                             0 -1px rgba(0, 0, 0, .1);
+                z-index: -1;
+            }
+            /* Service Card */
+            article.service .content {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            article.service .content .card {
+                width: 32%;
+                border-radius: 6px;
+                border: 1px solid rgba(0, 0, 0, .1);
+                overflow: hidden;
+                position: relative;
+            }
+            article.service .content .card .icon{
+                position: absolute;
+                background: green;
+                top: 160px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                color: white;
+            }
+            article.service .content .card .icon i {
+                width: 40px;
+                line-height: 40px;
+                text-align: center;
+                font-size: 25px;
+            }
+            article.service .content .card .img-wrap {
+                width: 100%;
+                height: 180px;
+                overflow: hidden;
+            }
+            article.service .content .card .img-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: all 0.5s ease;
+            }
+            article.service .content .card .img-wrap img:hover {
+                transform: scale(1.1);
+            }
+            article.service .content .card .paragraph {
+                margin: 24px;
+                font-size: 18px;
+                color: grey;
+            }
+
+            /* Verify */
+            .customer .content {
+                width: 100%;
+            }
+            .customer .content .img-wrap {
+                width: 80px;
+                height: 80px;
+                overflow: hidden;
+                border-radius: 50%;
+                margin: 50px auto;
+            }
+            .customer .content .img-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .customer .content .paragraph {
+                margin-bottom: 30px;
+            }
+            /* footer */
+            footer {
+                height: 150px;
+            }
+            footer .content{
+                height: 100%;
+                margin-top: 100px;
+                background: black;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 100px;
+                font-size: 20px;
+            }
+            footer .content .social {
+                display: block;
+                display: flex;
+            }
+            footer .content .social i{
+                display: block;
+                margin: 0 6px;
+                font-size: 28px;
+
+            }
+            @media  (max-width: 600px) {
+                article{
+                    padding: 0 10px;
+                }
+                header aside .burger-wrap {
+                    cursor: pointer;
+                    display: block;
+                }
+                header aside ul {
+                    display: none;
+                }
+                header aside ul.active {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: white;;
+                }
+                header aside ul li {
+                    margin: 20px;
+                }
+                header aside ul li a:hover {
+                    transform: translateY(0);
+                }
+                article.service .content {
+                    flex-direction: column;
+                }
+                article.service .content .card {
+                    width: 80%;
+                    margin: 20px 0;
+                }
+                article.about .content {
+                    flex-direction: column;
+                    padding: 0 100px;
+                }
+                article.about .content .img-wrap {
+                    width: 100%;
+                    margin: 0;
+                }
+            }
+        </style>
     </head>
     <body>
-        <h1>Angel</h1>
         <header>
+            <aside>
+                <div class="burger-wrap">
+                    <div class="burger"></div>
+                </div>
+                <ul id="menu">
+                    <li>
+                        <a href="#">關於我</a>
+                    </li>
+                    <li>
+                        <a href="#">服務項目</a>
+                    </li>
+                    <li>
+                        <a href="#">客戶驗證</a>
+                    </li>
+                </ul>
+            </aside>
             <div class="banner">
-                <img src="https://images.unsplash.com/photo-1514829560620-c510997c9c41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="">
+                <div class="title">Angel's Treatment</div>
+                <div class="img-wrap">
+                    <img src="https://images.unsplash.com/photo-1514829560620-c510997c9c41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="">
+                </div>
             </div>
         </header>
         <div>
-            <article></article>
+            <article class="about">
+                <h1 class="sub-title">關於我</h1>
+                <div class="content">
+                    <div class="img-wrap">
+                        <img src="https://images.unsplash.com/photo-1616902599633-ebde6959ad85?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80" alt="">
+                    </div>
+                    <div class="paragraph">
+                        <div class="name">ABOUT</div>
+                        <div class="resume">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam temporibus quod reprehenderit similique natus doloribus placeat sed blanditiis, commodi repudiandae. Quis at ratione labore commodi! Ipsum, cupiditate! Debitis, voluptatem cumque.</p>
+                            <br>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo accusamus rerum magnam adipisci architecto quo possimus dolorum maxime numquam, impedit provident neque odio. Quis, assumenda exercitationem. Doloremque enim ratione provident.</p>
+                            <br>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus recusandae voluptatum consequuntur eveniet ipsum soluta laboriosam fugit, magnam accusantium tempore possimus, excepturi consectetur? Voluptate, fugiat voluptatem quidem doloribus fugit quis.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="service">
+                <h1 class="sub-title">服務項目</h1>
+                <div class="content">
+                    <!-- card 1 -->
+                    <div class="card">
+                        <div class="img-wrap">
+                            <img src="https://images.unsplash.com/photo-1576184802540-cb0b7fc71e73?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80" alt="">
+                            <div class="icon">
+                                <div class="content">
+                                    <i class="far fa-gem"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae facilis officia consequatur debitis, modi similique iste commodi fuga et, excepturi dolore deleniti soluta doloribus asperiores. At iusto sequi dolorum suscipit.</p>
+                        </div>
+                    </div>
+
+                     <!-- card 2 -->
+                     <div class="card">
+                        <div class="img-wrap">
+                            <img src="https://images.unsplash.com/photo-1612323272007-3e7c28f6eb05?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="">
+                            <div class="icon">
+                                <div class="content">
+                                    <i class="fab fa-pagelines"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae facilis officia consequatur debitis, modi similique iste commodi fuga et, excepturi dolore deleniti soluta doloribus asperiores. At iusto sequi dolorum suscipit.</p>
+                        </div>
+                    </div>
+
+                     <!-- card 3 -->
+                     <div class="card">
+                        <div class="img-wrap">
+                            <img src="https://images.unsplash.com/photo-1529257414772-1960b7bea4eb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="">
+                            <div class="icon">
+                                <div class="content">
+                                    <i class="fas fa-cat"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae facilis officia consequatur debitis, modi similique iste commodi fuga et, excepturi dolore deleniti soluta doloribus asperiores. At iusto sequi dolorum suscipit.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </article>
+            <article class="customer">
+                <h1 class="sub-title">客戶驗證</h1>
+                <div class="content">
+                    <div class="owl-carousel owl-theme">
+                    <!-- card 1 -->
+                    <div class="card">
+                        <div class="name">
+                            <h1>victor Tsai</h1>
+                        </div>
+                        <div class="img-wrap">
+                            <img src="https://images.unsplash.com/photo-1621972188361-bdd4a21801ac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80" alt="">
+                        </div>
+                        <div class="paragraph">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est similique sed corrupti nihil delectus, ut expedita quidem architecto ea. Dolore provident commodi unde nihil reprehenderit debitis aut at animi delectus.</p>
+                        </div>
+                    </div>
+
+                    <!-- card 2 -->
+                    <div class="card">
+                        <div class="name">
+                            <h1>LaLa Liang</h1>
+                        </div>
+                        <div class="img-wrap">
+                            <img src="https://images.unsplash.com/photo-1611867967135-0faab97d1530?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" alt="">
+                        </div>
+                        <div class="paragraph">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est similique sed corrupti nihil delectus, ut expedita quidem architecto ea. Dolore provident commodi unde nihil reprehenderit debitis aut at animi delectus.</p>
+                        </div>
+                    </div>
+
+                    <!-- card 3 -->
+                    <div class="card">
+                        <div class="name">
+                            <h1>Christina Chen</h1>
+                        </div>
+                        <div class="img-wrap">
+                            <img src="https://images.unsplash.com/photo-1590820225605-fe14606ee40b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=718&q=80" alt="">
+                        </div>
+                        <div class="paragraph">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est similique sed corrupti nihil delectus, ut expedita quidem architecto ea. Dolore provident commodi unde nihil reprehenderit debitis aut at animi delectus.</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </article>
         </div>
-        <footer></footer>
+        <footer>
+            <div class="content">
+                <div class="col">
+                    <div>Angel's Treatment</div>
+                </div>
+                <div class="col">
+                    <div>Made By YoiaDigital</div>
+                </div>
+                <div class="col social">
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-line"></i>
+                </div>
+            </div>
+        </footer>
+        <script>
+            $('.burger-wrap').click(() => {
+                $('#menu').toggleClass('active');
+            })
+            $('.owl-carousel').owlCarousel({
+                loop:true,
+                margin: 100,
+                nav:true,
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                }
+            })
+        </script>
     </body>
 </html>
