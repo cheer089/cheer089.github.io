@@ -9,13 +9,15 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
+        <link rel="preconnect" href="https://fonts.gstatic.com"> 
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500&display=swap" rel="stylesheet">
         <title>Document</title>
         <style>
             * {
                 padding: 0;
                 margin: 0;
                 box-sizing: border-box;
+                font-family: 'Noto Sans TC', sans-serif;
             }
             article {
                 display: inline-block;
@@ -25,7 +27,7 @@
             }
             article .sub-title {
                 margin: 100px 0 50px 0;
-                font-size: 32px;
+                font-size: 28px;
                 font-weight: 500;
             }
             header {
@@ -71,7 +73,7 @@
                 position: relative;
                 width: 100%;
                 height: 2px;
-                background-color: black;
+                background-color: #0c0c0c;
                 display: block;
             }
             header aside .burger::after {
@@ -79,7 +81,7 @@
                 display: block;
                 width: 100%;
                 height: 2px;
-                background: black;
+                background: #0c0c0c;
                 top: -8px;
                 left: 0;
                 position: absolute;
@@ -89,7 +91,7 @@
                 display: block;
                 width: 100%;
                 height: 2px;
-                background: black;
+                background: #0c0c0c;
                 top: 8px;
                 left: 0;
                 position: absolute;
@@ -106,12 +108,11 @@
             header aside ul li a {
                 text-decoration: none;
                 outline: none;
-                color: black;
-                font-weight: 600;
+                font-weight: 300;
                 display: inline-block;
                 transition: all .5s ease-in-out;
                 font-size: 20px;
-                color: black;
+                color: #0c0c0c;
             }
             header aside ul li a:hover {
                 transform: translateY(-6px);
@@ -150,6 +151,7 @@
             }
             article.about .content .paragraph {
                 position: relative;
+                color: #434343;
             }
             article.about .content .paragraph .name::after {
                 content: "Angel";
@@ -157,7 +159,7 @@
                 font-size: 60px;
                 font-weight: 600;
                 text-align: start;
-                color: black;
+                color: rgb(12, 12, 12);
                 top: 50%;
                 left: 20px;
                 transform: translateY(-50%);
@@ -192,7 +194,7 @@
             }
             article.service .content .card .icon{
                 position: absolute;
-                background: green;
+                background: #66bab7;
                 top: 160px;
                 left: 50%;
                 transform: translateX(-50%);
@@ -224,9 +226,24 @@
             article.service .content .card .paragraph {
                 margin: 24px;
                 font-size: 18px;
-                color: grey;
+                color: #434343;
             }
-
+            article.service .content .card .paragraph .service-name {
+                padding: 10px 0;
+                color: #eb7a77;
+                font-weight: 400;
+                text-align: start;
+                position: relative;
+            }
+            article.service .content .card .paragraph .service-name::after {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 1px;
+                background-color: #eb7a77;
+                margin-top: 10px;
+                left: 0;
+            }
             /* Verify */
             .customer .content {
                 width: 100%;
@@ -245,6 +262,7 @@
             }
             .customer .content .paragraph {
                 margin-bottom: 30px;
+                color: #434343;
             }
             /* footer */
             footer {
@@ -253,7 +271,7 @@
             footer .content{
                 height: 100%;
                 margin-top: 100px;
-                background: black;
+                background: #0c0c0c;
                 color: white;
                 display: flex;
                 align-items: center;
@@ -392,6 +410,7 @@
                             </div>
                         </div>
                         <div class="paragraph">
+                            <h4 class="service-name">天使靈氣</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae facilis officia consequatur debitis, modi similique iste commodi fuga et, excepturi dolore deleniti soluta doloribus asperiores. At iusto sequi dolorum suscipit.</p>
                         </div>
                     </div>
@@ -407,6 +426,7 @@
                             </div>
                         </div>
                         <div class="paragraph">
+                            <h4 class="service-name">塔羅牌占卜</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae facilis officia consequatur debitis, modi similique iste commodi fuga et, excepturi dolore deleniti soluta doloribus asperiores. At iusto sequi dolorum suscipit.</p>
                         </div>
                     </div>
@@ -422,6 +442,7 @@
                             </div>
                         </div>
                         <div class="paragraph">
+                            <h4 class="service-name">動物溝通</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae facilis officia consequatur debitis, modi similique iste commodi fuga et, excepturi dolore deleniti soluta doloribus asperiores. At iusto sequi dolorum suscipit.</p>
                         </div>
                     </div>
@@ -497,6 +518,9 @@
                 loop:true,
                 margin: 100,
                 nav:true,
+                autoplay:true,
+                autoplayTimeout:1000,
+                autoplayHoverPause:true,
                 responsive:{
                     0:{
                         items:1
