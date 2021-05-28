@@ -126,7 +126,6 @@
             }
             article.about .content .img-wrap {
                 width: 800px;
-                height: 400px;
                 overflow: hidden;
                 border-radius: 6px;
                 animation: up-down 3s;
@@ -270,7 +269,6 @@
                 display: block;
                 margin: 0 6px;
                 font-size: 28px;
-
             }
             @media  (max-width: 600px) {
                 article{
@@ -305,11 +303,33 @@
                 }
                 article.about .content {
                     flex-direction: column;
-                    padding: 0 100px;
+                    padding: 0 20px;
                 }
                 article.about .content .img-wrap {
                     width: 100%;
                     margin: 0;
+                }
+                article.about .content .img-wrap {
+                    width: 100vw;
+                    padding: 0 40px;
+                    margin-bottom: 40px;
+                }
+                article.about .content .img-wrap img{
+                    object-fit: cover;
+                }
+                article.about .content .paragraph .name{
+                    text-align: justify;
+                    font-size: 25vw;
+                }
+                footer {
+                    height: 250px;
+                }
+                footer .content {
+                    flex-direction: column;
+                    justify-content: space-around;
+                }
+                footer .content .social i{
+                    font-size: 36px;
                 }
             }
         </style>
