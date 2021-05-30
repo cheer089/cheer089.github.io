@@ -19,14 +19,17 @@
                 box-sizing: border-box;
                 font-family: 'Noto Sans TC', sans-serif;
             }
+            body {
+                background-color: rgb(255, 255, 251);
+            }
             article {
                 display: inline-block;
                 text-align: center;
                 width: 100%;
-                padding: 0 200px;
+                padding: 50px 200px;
             }
             article .sub-title {
-                margin: 100px 0 50px 0;
+                margin: 0 0 50px 0;
                 font-size: 28px;
                 font-weight: 500;
             }
@@ -36,17 +39,59 @@
             header .banner {
                 position: relative;
             }
+            /* Change background header */
+            .scroll-header{
+                box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            }
+            /* Active menu */
+            .active-link{
+                color: #66bab7;
+            }
             header .banner .title {
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translateX(-50%) translateY(-50%);
                 font-size: 46px;
+                z-index: 2;
+                color: rgb(252, 250, 242);
             }
             header .banner .img-wrap {
                 width: 100%;
                 height: 100vh;
+                position: relative;
             }
+             header .banner .img-wrap::after {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, .2);
+            }
+            /* header .banner .img-wrap::after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: "";
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 800px 800px 0 0;
+                border-color: rgba(0, 0, 0, .2) transparent transparent transparent;
+            } */
+            /* header .banner .img-wrap::before {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                content: "";
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 0 800px 800px;
+                border-color: transparent transparent rgba(0, 0, 0, .2) transparent;
+            } */
             header .banner .img-wrap img {
                 width: 100%;
                 height: 100%;
@@ -54,18 +99,26 @@
             }
             header .banner .wave {
                 position: absolute;
-                bottom: -100px;
+                bottom: -50px;
                 left: 0;
             }
-            /* header .banner::before {
-                content: "";
+            header .banner .wave1 {
                 position: absolute;
                 bottom: -20px;
-                width: 100%;
-                height: 150px;
-                z-index: 100;
-                background: linear-gradient(to top, #fff, transparent);
-            } */
+                left: 0;
+                animation: waving1 6s infinite ease;
+            }
+            @keyframes waving1 {
+                0% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(20px);
+                }
+                100% {
+                    transform: translateY(0);
+                }
+            }
             header aside {
                 width: 100%;
                 height: 60px;
@@ -81,14 +134,15 @@
                 cursor: pointer;
                 display: none;
                 position: relative;
-                padding: 20px 0;
+                padding: 8px 0;
             }
             header aside .burger {
                 position: relative;
                 width: 100%;
                 height: 2px;
-                background-color: #0c0c0c;
+                color: #0c0c0c;
                 display: block;
+                background-color: #0c0c0c;
             }
             header aside .burger::after {
                 content: "";
@@ -126,7 +180,7 @@
                 display: inline-block;
                 transition: all .5s ease-in-out;
                 font-size: 20px;
-                color: #0c0c0c;
+                color: rgb(252, 250, 242);
             }
             header aside ul li a:hover {
                 transform: translateY(-6px);
@@ -168,7 +222,7 @@
                 color: #434343;
             }
             article.about .content .paragraph .name::after {
-                content: "Angel";
+                content: "Angely";
                 position: absolute;
                 font-size: 60px;
                 font-weight: 600;
@@ -192,12 +246,18 @@
                              0 -1px rgba(0, 0, 0, .1);
                 z-index: -1;
             }
+            article.about .content .paragraph p {
+                text-align: start;
+            }
             /* Service Card */
+            article.service {
+                background-color: rgba(215, 196, 187, .1);
+            }
             article.service .content {
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
-                align-items: center;
+                /* align-items: center; */
             }
             article.service .content .card {
                 width: 32%;
@@ -205,6 +265,7 @@
                 border: 1px solid rgba(0, 0, 0, .1);
                 overflow: hidden;
                 position: relative;
+                flex-basis: 32%;
             }
             article.service .content .card .icon{
                 position: absolute;
@@ -215,7 +276,7 @@
                 border-radius: 50%;
                 width: 40px;
                 height: 40px;
-                color: white;
+                color: rgb(255, 255, 251)
             }
             article.service .content .card .icon i {
                 width: 40px;
@@ -248,6 +309,11 @@
                 font-weight: 400;
                 text-align: start;
                 position: relative;
+            }
+            article.service .content .card .paragraph p {
+               font-size: 14px;
+               text-align: start;
+               margin: 0 10px;
             }
             article.service .content .card .paragraph .service-name::after {
                 content: "";
@@ -282,11 +348,11 @@
             footer {
                 height: 150px;
             }
-            footer .content{
+            footer .content {
                 height: 100%;
                 margin-top: 100px;
                 background: #0c0c0c;
-                color: white;
+                color: rgb(252, 250, 242);
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -306,22 +372,41 @@
                 article{
                     padding: 0 10px;
                 }
+                header aside{
+                    width: 100%;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    background-color: rgba(255, 255, 255, .5);
+                }
+
                 header aside .burger-wrap {
                     cursor: pointer;
                     display: block;
                 }
                 header aside ul {
-                    display: none;
+                    visibility: hidden;
+                    transform: translateY(-100px);
+                    transition: .3s;
                 }
-                header aside ul.active {
+                header aside ul.show-menu {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
                     background-color: white;;
+                    visibility: visible;
+                    transform: translateY(0);
+
                 }
                 header aside ul li {
                     margin: 20px;
+                    text-align: center;
+                }
+                header aside ul li a {
+                    width: 100%;
+                    color: #0c0c0c
                 }
                 header aside ul li a:hover {
                     transform: translateY(0);
@@ -368,19 +453,19 @@
     </head>
     <body>
         <header>
-            <aside>
-                <div class="burger-wrap">
+            <aside id="header">
+                <div class="burger-wrap" id="nav-toggle">
                     <div class="burger"></div>
                 </div>
-                <ul id="menu">
+                <ul id="nav-menu" class="nav__menu">
                     <li>
-                        <a href="#">關於我</a>
+                        <a href="#about" class="nav__link">關於我</a>
                     </li>
                     <li>
-                        <a href="#">服務項目</a>
+                        <a href="#service" class="nav__link">服務項目</a>
                     </li>
                     <li>
-                        <a href="#">客戶驗證</a>
+                        <a href="#customer" class="nav__link">客戶驗證</a>
                     </li>
                 </ul>
             </aside>
@@ -389,29 +474,30 @@
                 <div class="img-wrap">
                     <img src="https://images.unsplash.com/photo-1514829560620-c510997c9c41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="">
                 </div>
-                <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,160L34.3,165.3C68.6,171,137,181,206,170.7C274.3,160,343,128,411,96C480,64,549,32,617,48C685.7,64,754,128,823,133.3C891.4,139,960,85,1029,90.7C1097.1,96,1166,160,1234,181.3C1302.9,203,1371,181,1406,170.7L1440,160L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+                <svg class="wave1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgb(255, 255, 251)" fill-opacity=".5" d="M0,160L34.3,165.3C68.6,171,137,181,206,170.7C274.3,160,343,128,411,96C480,64,549,32,617,48C685.7,64,754,128,823,133.3C891.4,139,960,85,1029,90.7C1097.1,96,1166,160,1234,181.3C1302.9,203,1371,181,1406,170.7L1440,160L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+                <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgb(255, 255, 251)" fill-opacity="1" d="M0,160L34.3,165.3C68.6,171,137,181,206,170.7C274.3,160,343,128,411,96C480,64,549,32,617,48C685.7,64,754,128,823,133.3C891.4,139,960,85,1029,90.7C1097.1,96,1166,160,1234,181.3C1302.9,203,1371,181,1406,170.7L1440,160L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
             </div>
         </header>
         <div>
-            <article class="about">
+            <article class="about"  id="about">
                 <h1 class="sub-title">關於我</h1>
                 <div class="content">
                     <div class="img-wrap">
-                        <img src="https://images.unsplash.com/photo-1616902599633-ebde6959ad85?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80" alt="">
+                        <img src="/images/self.png" alt="self">
                     </div>
                     <div class="paragraph">
                         <div class="name">ABOUT</div>
                         <div class="resume">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam temporibus quod reprehenderit similique natus doloribus placeat sed blanditiis, commodi repudiandae. Quis at ratione labore commodi! Ipsum, cupiditate! Debitis, voluptatem cumque.</p>
+                            <p>我是Angely，獅子座Ａ型，顯示者 從小就對星座、神祕學相當感興趣，也非常喜歡動物。在某次營救一隻流浪貓失敗後，被動物溝通師傳遞的訊息哭得久久不能自已，往後便決定自己也想當了解動物心聲的特別存在。 </p>
                             <br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo accusamus rerum magnam adipisci architecto quo possimus dolorum maxime numquam, impedit provident neque odio. Quis, assumenda exercitationem. Doloremque enim ratione provident.</p>
+                            <p>高敏感體質的關係，對於外在的一切情緒波動都非常敏感， 尤其是負能量的部分，令以前的我痛苦不堪。 也時不時疑惑自己此生來到地球的任務為何 在旅途中一個重要的契機之下，我又更深入了靈性世界。 有幸學習了天使靈氣療癒後，成為拯救我人生中那把很關鍵的鑰匙。</p>
                             <br>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus recusandae voluptatum consequuntur eveniet ipsum soluta laboriosam fugit, magnam accusantium tempore possimus, excepturi consectetur? Voluptate, fugiat voluptatem quidem doloribus fugit quis.</p>
+                            <p>「療癒自己過往的傷痛，找回對生活的勇氣與熱情」 就是給自己最大的禮物。 我也想把這份充滿光與愛的禮物帶給更多的人， 快跟著我一起進入療癒的世界吧：）</p>
                         </div>
                     </div>
                 </div>
             </article>
-            <article class="service">
+            <article class="service" id="service">
                 <h1 class="sub-title">服務項目</h1>
                 <div class="content">
                     <!-- card 1 -->
@@ -426,7 +512,7 @@
                         </div>
                         <div class="paragraph">
                             <h4 class="service-name">天使靈氣</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae facilis officia consequatur debitis, modi similique iste commodi fuga et, excepturi dolore deleniti soluta doloribus asperiores. At iusto sequi dolorum suscipit.</p>
+                            <p>天使靈氣是透過大天使麥達昶（Ｍetatron）和英國的Kevin Core and Christine Core 共同管道連結下來的靈性傳承，並與天使的高頻振動相結合所創建的。 雖然平常我們無法肉眼看到天使，但天使其實一直以無條件的愛守護著我們 天使王國的天使會藉由天使靈氣的療癒師作為管道給予個案最高善且的療癒 靈氣可以療癒你過往的傷痛，並轉化負面的能量，釋放掉阻塞的情緒壓力 調理全身的脈輪能量 天使靈氣的後座力可以持續一個月,一個月內可以細細察覺靈氣帶來生活上心境的不同感受 天使靈氣的頻率非常溫和，也十分適合年長者、孕婦、兒童及寵物。 </p>
                         </div>
                     </div>
 
@@ -442,7 +528,10 @@
                         </div>
                         <div class="paragraph">
                             <h4 class="service-name">塔羅牌占卜</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae facilis officia consequatur debitis, modi similique iste commodi fuga et, excepturi dolore deleniti soluta doloribus asperiores. At iusto sequi dolorum suscipit.</p>
+                            <p>讓塔羅牌給您生活上的指引。線上遠距諮詢半小時，通常能詢問約兩個~三個問題
+                                感情/學業/事業/運勢
+                                限占卜自身三個月至半年的問題，不涉及他人隱私為主。
+                                占卜最後還會有一張彩虹卡，是宇宙想帶給你的訊息。</p>
                         </div>
                     </div>
 
@@ -458,13 +547,13 @@
                         </div>
                         <div class="paragraph">
                             <h4 class="service-name">動物溝通</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae facilis officia consequatur debitis, modi similique iste commodi fuga et, excepturi dolore deleniti soluta doloribus asperiores. At iusto sequi dolorum suscipit.</p>
+                            <p>動物溝通為直覺性溝通，幫助你了解家中毛小孩心中藏著的大小事 毛小孩在家中扮演的角色通常都是療癒照顧者的，尋求溝通師來找到照顧者與毛小孩生活中間的平衡是很重要的噢！ 單次溝通時間為線上一小時，家長們在預約成功後，可以先想好想要詢問或是和毛小孩聊聊的問題喔！ 請提供毛小孩近期（不超過三個月）正眼看鏡頭的照片，不修圖，不加濾鏡至少三張。 若想詢問毛小孩對於家人的想法，也請提供家人的照片給溝通師。 </p>
                         </div>
                     </div>
 
                 </div>
             </article>
-            <article class="customer">
+            <article class="customer" id="customer">
                 <h1 class="sub-title">客戶驗證</h1>
                 <div class="content">
                     <div class="owl-carousel owl-theme">
@@ -477,7 +566,9 @@
                             <img src="https://images.unsplash.com/photo-1621972188361-bdd4a21801ac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80" alt="">
                         </div>
                         <div class="paragraph">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est similique sed corrupti nihil delectus, ut expedita quidem architecto ea. Dolore provident commodi unde nihil reprehenderit debitis aut at animi delectus.</p>
+                            <p>很謝謝Angely幫助我IET療癒，一直以來我都知道自己是一個對自我要求很高的人，有許多憤怒的情緒都是因為對自己失望生氣，這些議題也在療癒中被翻出來療癒，能夠正視自己的議題接受它、療癒它是一個非常難得的機會跟體驗。
+                                也因為療癒讓我能夠保持正向持續前進，雖然未來狀態還不明朗，但我相信有天使能量的陪伴，未來一定能夠越來越好、越來越順利。
+                                我也真心的推薦同樣被現狀困住的你們來試試IET大天使能量療癒，幫自己找回生活的重心與目標</p>
                         </div>
                     </div>
 
@@ -490,7 +581,10 @@
                             <img src="https://images.unsplash.com/photo-1611867967135-0faab97d1530?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" alt="">
                         </div>
                         <div class="paragraph">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est similique sed corrupti nihil delectus, ut expedita quidem architecto ea. Dolore provident commodi unde nihil reprehenderit debitis aut at animi delectus.</p>
+                            <p>施作的過程中，因為是面對面，剛開始有點緊張，有點小尷尬，後來就很自然放鬆了，然後不自覺的流下眼淚，好像是種抒發、發洩的感覺，也不明白為什麼眼淚會自己流下來，真的很神奇！
+                                之後覺得自己整個人都很舒服放鬆，像是本來壓在身上的東西（壓力束縛）不見了
+                                每個人對於能量體驗感受不一樣，如果還在觀望或是真的想嘗試看看的，推薦angely老師～
+                                本人很親切溫柔，不會不耐煩或是讓人覺得被推銷的感覺</p>
                         </div>
                     </div>
 
@@ -541,7 +635,60 @@
                         items:1
                     },
                 }
-            })
+            });
+            /*==================== SHOW MENU ====================*/
+            const showMenu = (toggleId, navId) =>{
+                const toggle = document.getElementById(toggleId),
+                nav = document.getElementById(navId)
+                
+                // Validate that variables exist
+                if(toggle && nav){
+                    toggle.addEventListener('click', ()=>{
+                        // We add the show-menu class to the div tag with the nav__menu class
+                        nav.classList.toggle('show-menu')
+                    })
+                }
+            }
+            showMenu('nav-toggle','nav-menu')
+
+            /*==================== REMOVE MENU MOBILE ====================*/
+            const navLink = document.querySelectorAll('.nav__link')
+
+            function linkAction(){
+                const navMenu = document.getElementById('nav-menu')
+                // When we click on each nav__link, we remove the show-menu class
+                navMenu.classList.remove('show-menu')
+            }
+            navLink.forEach(n => n.addEventListener('click', linkAction))
+
+            /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+            const sections = document.querySelectorAll('article[id]')
+
+            function scrollActive(){
+                const scrollY = window.pageYOffset
+
+                sections.forEach(current =>{
+                    const sectionHeight = current.offsetHeight
+                    const sectionTop = current.offsetTop - 50;
+                    sectionId = current.getAttribute('id')
+
+                    if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+                        document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+                    }else{
+                        document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+                    }
+                })
+            }
+            window.addEventListener('scroll', scrollActive)
+
+            /*==================== CHANGE BACKGROUND HEADER ====================*/ 
+            function scrollHeader(){
+                const nav = document.getElementById('header')
+                // When the scroll is greater than 200 viewport height, add the scroll-header class to the header tag
+                if(this.scrollY >= 200) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header')
+            }
+            window.addEventListener('scroll', scrollHeader)
+
         </script>
     </body>
 </html>
